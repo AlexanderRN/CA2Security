@@ -26,6 +26,15 @@
         <div id="print1">
         </div>
         
+        <div>
+            <input type="text" name="firstName" placeholder="Enter first name here:" id="input2"/>
+            <input type="text" name="lastName" placeholder="Enter last name here:" id="input3"/>
+            <input type="email" name="email" placeholder="Enter email here:" id="input4"/>
+            <button type="button" id="btn3" class="btn btn-primary">Opret bruger</button>
+        </div>
+        
+        <div id="respons"></div>
+        
         
 
         <script src="//code.jquery.com/jquery-1.11.3.min.js" type="text/javascript"></script>

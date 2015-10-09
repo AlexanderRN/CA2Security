@@ -34,4 +34,22 @@ $(document).ready(function () {
             alert("Failed.");
         });  
     });
+    
+    $("#btn3").click(function () {
+        var fname = $("#input2").val(); 
+        var lname = $("#input3").val(); 
+        var email = $("#input4").val(); 
+        var data = {firstName: fname, lastName: lname, email: email};
+        $.ajax({
+            url: "api/persons/",
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(data)
+        }).done(function (dataFromServer) {
+            $("#respons").text("Person has been added");
+        }).fail(function () {
+            alert("Failed.");
+        });  
+    });
 });

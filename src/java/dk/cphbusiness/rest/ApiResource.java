@@ -13,11 +13,13 @@ import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
+import static javax.ws.rs.HttpMethod.DELETE;
 import static javax.ws.rs.HttpMethod.POST;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -98,6 +100,14 @@ public class ApiResource {
         Person p = gson.fromJson(person, Person.class);
         f.createPerson(p);
         return Response.status(Response.Status.CREATED).type(MediaType.APPLICATION_JSON).entity(gson.toJson(p)).build();
+    }
+    
+    @DELETE
+    @Path("delete/{id}")
+    @Consumes("application/json")
+    public Response removeUser(int id) throws PersonNotFoundException {
+        f.removePerson(id);
+        return Response.status(Response.Status.GONE).build();
     }
 
     //------------------------Konventere til json(Hjælpe-FKT)---------------------

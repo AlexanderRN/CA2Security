@@ -1,11 +1,17 @@
 package dk.cphbusiness.text;
 
+import dk.cphbusiness.entity.Address;
+import dk.cphbusiness.entity.CityInfo;
 import dk.cphbusiness.entity.Person;
+import dk.cphbusiness.entity.Phone;
 import dk.cphbusiness.exceptions.PersonNotFoundException;
 import dk.cphbusiness.facade.PersonFacade;
 import java.io.IOException;
+import java.util.List;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import junit.framework.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -46,6 +52,36 @@ public class FacadeTest {
         
         Person p = f.getPerson(3);
         Assert.assertEquals(null, p);
+    }
+    
+    @Test
+    public void testGetPersonByZip() throws IOException, PersonNotFoundException {
+        int zip = 2970;
+        EntityManager em = emf.createEntityManager();
+        Query query = em.createQuery("SELECT z FROM CityInfo z WHERE z.zip = :zip");
+        query.setParameter("zip", zip);
+        CityInfo ci;
+        ci = (CityInfo) query.getSingleResult();
+
+        Phone phone = new Phone();
+        phone.setPhone("31344337");
+        phone.setDescription("Hej med dig.");
+
+        Person p3 = new Person();
+        p3.setFirstName("fewew");
+        p3.setLastName("dfvvveeve");
+        Address a = new Address();
+        a.setStreet("Gade 1");
+        a.setCityInfo(ci);
+        p3.setAddress(a);
+        p3.addPhone(phone);
+        
+        f.createPerson(p3);
+        
+        List<Person> persons = f.getPersonsByZip(2970);
+        
+        Person p = persons.get(0);
+        Assert.assertEquals(p.getFirstName(), p3.getFirstName());
     }
 
 }
