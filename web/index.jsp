@@ -20,6 +20,7 @@
             <input type="text" name="Id" placeholder="Enter ID here:" id="input1"/>
             <button type="button" id="btn1" class="btn btn-primary">Alt info</button>
             <button type="button" id="btn2" class="btn btn-primary">Kontakt info</button>
+            <button type="button" id="btn4" class="btn btn-primary">DELETE Person</button>
         </div>
         
         <h4 id="titel">Informationer:</h4>
@@ -31,11 +32,13 @@
             <input type="text" name="lastName" placeholder="Enter last name here:" id="input3"/>
             <input type="email" name="email" placeholder="Enter email here:" id="input4"/>
             <button type="button" id="btn3" class="btn btn-primary">Opret bruger</button>
+            <button type="button" id="btn5" class="btn btn-primary">Alle Personer</button>
         </div>
         
         <div id="respons"></div>
         
-        
+        <div id="alle"></div>
+
 
         <script src="//code.jquery.com/jquery-1.11.3.min.js" type="text/javascript"></script>
         <script src="js.js" type="text/javascript"></script>

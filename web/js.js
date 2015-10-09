@@ -2,7 +2,7 @@ $(document).ready(function () {
     $("#btn1").click(function () {
         var id = $("#input1").val();
         $.ajax({
-            url: "api/persons/complete/"+id,
+            url: "api/persons/complete/" + id,
             type: "GET",
             dataType: "json"
         }).done(function (dataFromServer) {
@@ -14,14 +14,14 @@ $(document).ready(function () {
             $("#print1").append("<br>Hobbies: " + dataFromServer.hobbies);
         }).fail(function () {
             alert("Failed.");
-        });  
+        });
     });
-    
+
     $("#btn2").click(function () {
         var id = $("#input1").val();
 
         $.ajax({
-            url: "api/persons/complete/"+id,
+            url: "api/persons/complete/" + id,
             type: "GET",
             dataType: "json"
         }).done(function (dataFromServer) {
@@ -32,13 +32,49 @@ $(document).ready(function () {
             $("#print1").append("<br>Address: " + dataFromServer.address);
         }).fail(function () {
             alert("Failed.");
-        });  
+        });
     });
-    
+
+    $("#btn5").click(function () {
+
+        $.ajax({
+            url: "api/persons/complete/",
+            type: "GET",
+            dataType: "json"
+        }).done(function (dataFromServer) {
+            dataFromServer.forEach(function (person) {
+                $("#alle").append(makeRow(person));
+            });
+        }).fail(function () {
+            alert("Failed.");
+        });
+    });
+
+
+    function makeRow(person) {
+        var row = "<tr><td>" + person.firstName + "</td><td>" + person.lastName + "</td><td>" + person.email + "</td>\n\
+        <td>" + person.street + "</td><td>" + person.additionalInfo + "</td><td>" + person.zipCode + "</td><td>" + person.city + "</td></tr>";
+        return row;
+    }
+
+    $("#btn4").click(function () {
+        var id = $("#input1").val();
+
+        $.ajax({
+            url: "api/persons/delete/" + id,
+            type: "DELETE",
+            dataType: "json"
+        }).done(function (dataFromServer) {
+            $("#titel").text("Personen er hermed slettet.");
+        }).fail(function () {
+            alert("Failed.");
+        });
+    });
+
     $("#btn3").click(function () {
-        var fname = $("#input2").val(); 
-        var lname = $("#input3").val(); 
-        var email = $("#input4").val(); 
+        var fname = $("#input2").val();
+        var lname = $("#input3").val();
+        var email = $("#input4").val();
         var data = {firstName: fname, lastName: lname, email: email};
         $.ajax({
             url: "api/persons/",
@@ -50,6 +86,6 @@ $(document).ready(function () {
             $("#respons").text("Person has been added");
         }).fail(function () {
             alert("Failed.");
-        });  
+        });
     });
 });

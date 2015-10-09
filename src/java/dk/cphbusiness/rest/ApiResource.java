@@ -59,8 +59,17 @@ public class ApiResource {
     public String getPerson(@PathParam("id") int id) throws PersonNotFoundException {
         return gson.toJson(f.getPerson(id));
     }
+    
+    //-------------------------------------3--------------------------------------
+    
+    @GET
+    @Path("phone/{nr}")
+    @Produces("application/json")
+    public String getPerson(@PathParam("nr") String nr) throws PersonNotFoundException {
+        return gson.toJson(f.getPersonByPhone(nr));
+    }
 
-    //-------------------------------------3-------------------------------------
+    //-------------------------------------4-------------------------------------
 
     @GET
     @Path("contactinfo")
