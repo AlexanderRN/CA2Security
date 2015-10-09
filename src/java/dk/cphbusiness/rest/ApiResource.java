@@ -66,7 +66,16 @@ public class ApiResource {
     @Path("phone/{nr}")
     @Produces("application/json")
     public String getPerson(@PathParam("nr") String nr) throws PersonNotFoundException {
-        return gson.toJson(f.getPersonByPhone(nr));
+        JsonObject obj = makePerson1(f.getPersonByPhone(nr));
+        return gson.toJson(obj);
+    }
+    
+    @GET
+    @Path("zip/{nr}")
+    @Produces("application/json")
+    public String getPerson1(@PathParam("nr") String nr) throws PersonNotFoundException {
+        JsonObject obj = makePerson1(f.getPersonByPhone(nr));
+        return gson.toJson(obj);
     }
 
     //-------------------------------------4-------------------------------------
@@ -150,6 +159,7 @@ public class ApiResource {
     private JsonObject makePerson1(Person person) {
         JsonObject jperson = new JsonObject();
         jperson.addProperty("firstName", person.getFirstName());
+        jperson.addProperty("lastName", person.getLastName());
         jperson.addProperty("email", person.getEmail());
 
         JsonArray JpersTlf = new JsonArray();

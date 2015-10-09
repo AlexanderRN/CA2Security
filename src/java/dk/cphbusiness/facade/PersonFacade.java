@@ -103,8 +103,8 @@ public class PersonFacade {
             }
         }
         Phone person1 = em.find(Phone.class, phoneId);
-        Query query = em.createQuery("SELECT p FROM Person p WHERE :phone IN (p.phones)");
-        query.setParameter("phone", person1);
+        Query query = em.createQuery("SELECT i FROM Phone p JOIN p.infoEntity i WHERE p.phone = :phone");
+        query.setParameter("phone", phoneNr);
 
         person = (Person) query.getSingleResult();
         } catch (Error e) {

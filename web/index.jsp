@@ -11,10 +11,12 @@
         <div class="row">
              <div class="col-md-4" id="authors">Mazlum Dogan Sert, Junes Zuri & Alexander Rode Nielsen </div>
 
-            <div class="col-md-4" id="class">A</div>
+            <div class="col-md-2" id="class">A</div>
 
-            <div class="col-md-4" id= "group">12</div> 
-        </div>
+            <div class="col-md-2" id= "group">12</div>
+            
+            <div class="col-md-4"></div> 
+        </div><br>
         
         
         
@@ -23,7 +25,8 @@
             <button type="button" id="btn1" class="btn btn-primary">Alt info</button>
             <button type="button" id="btn2" class="btn btn-primary">Kontakt info</button>
             <button type="button" id="btn6" class="btn btn-primary">Hent person med tlf nr.</button>
-            <button type="button" id="btn4" class="btn btn-primary">DELETE Person</button>   
+            <button type="button" id="btn4" class="btn btn-primary">DELETE Person</button>
+            <button type="button" id="btn7" class="btn btn-primary">Hent person med tlf nr.</button>
         </div>
         
         <h4 id="titel">Informationer:</h4>

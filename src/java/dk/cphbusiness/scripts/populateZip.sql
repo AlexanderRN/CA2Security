@@ -1,3 +1,4 @@
+--INSERT INTO Address VALUES (null, 'Vej 500', 'Intet2', 620);
 INSERT INTO Address (ID, STREET, AdditionalInfo) VALUES (null, 'Vej 1', 'Intet');
 INSERT INTO Address (ID, STREET, AdditionalInfo) VALUES (null, 'Vej 2', 'Intet2');
 
@@ -6,6 +7,9 @@ INSERT INTO Hobby (ID, DESCRIPTION, HOBBYNAME) VALUES (null, 'Samle mælk ok', '
 INSERT INTO InfoEntity (ID, DTYPE, Email, FirstName, LastName) VALUES (null, 'Person', 'Bo@hotmail.dk', 'Bo', 'Boss');
 INSERT INTO InfoEntity (ID, DTYPE, Email, FirstName, LastName) VALUES (null, 'Person', 'Børge@hotmail.dk', 'Børge', 'Børgesen');
 INSERT INTO InfoEntity (ID, DTYPE, Email, FirstName, LastName) VALUES (null, 'Person', 'Junes@hotmail.dk', 'Junes', 'Zuri');
+--INSERT INTO InfoEntity VALUES (null, 'Person', 'Alexander@hotmail.dk', 1, 'Alexander', 'Nielsen');
+
+--insert into PHONE VALUES (null,'he','31344337',3);
 
 INSERT INTO CITYINFO (ZIP, CITY) VALUES ('0555', 'Scanning');
 INSERT INTO CITYINFO (ZIP, CITY) VALUES ('0800', 'Høje Taastrup');

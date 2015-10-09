@@ -2,6 +2,7 @@ package dk.cphbusiness.text;
 
 import dk.cphbusiness.entity.Address;
 import dk.cphbusiness.entity.CityInfo;
+import dk.cphbusiness.entity.Hobby;
 import dk.cphbusiness.entity.Person;
 import dk.cphbusiness.entity.Phone;
 import dk.cphbusiness.exceptions.PersonNotFoundException;
@@ -91,12 +92,29 @@ public class FacadeTest {
         p.setLastName("Phone");
         Phone ph = new Phone();
         ph.setPhone("31344337");
+        ph.setDescription("jUnit Test");
         p.getPhones().add(ph);
         
         f.createPerson(p);
         
-        Person p1 = f.getPerson(6);
-        Assert.assertEquals("31344337", p1.getPhones().get(0).getPhone());
+        Person p1 = f.getPersonByPhone("31344337");
+        Assert.assertEquals(p.getFirstName(), p1.getFirstName());
+    }
+    
+    @Test
+    public void testGetPersonsWithHobby() throws IOException, PersonNotFoundException{
+        Person p = new Person();
+        p.setFirstName("Hobby");
+        p.setLastName("Hobby");
+        Hobby h = new Hobby();
+        h.setHobbyName("Frimærkesamler.");
+        h.setDescription("Samler hobbies Joe.");
+        p.getHobbies().add(h);
+        
+        f.createPerson(p);
+        
+        List<Person> persons= f.getPersonsWithAHobby(h);
+        Assert.assertEquals(p.getFirstName(), persons.get(0).getFirstName());
     }
 
 }
