@@ -83,5 +83,20 @@ public class FacadeTest {
         Person p = persons.get(0);
         Assert.assertEquals(p.getFirstName(), p3.getFirstName());
     }
+    
+    @Test
+    public void testGetPersonByPhone() throws IOException, PersonNotFoundException{
+        Person p = new Person();
+        p.setFirstName("Phone");
+        p.setLastName("Phone");
+        Phone ph = new Phone();
+        ph.setPhone("31344337");
+        p.getPhones().add(ph);
+        
+        f.createPerson(p);
+        
+        Person p1 = f.getPerson(6);
+        Assert.assertEquals("31344337", p1.getPhones().get(0).getPhone());
+    }
 
 }

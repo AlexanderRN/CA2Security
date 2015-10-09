@@ -50,6 +50,23 @@ $(document).ready(function () {
         });
     });
 
+    $("#btn6").click(function () {
+        var id = $("#input1").val();
+        $.ajax({
+            url: "api/persons/phone/" + id,
+            type: "GET",
+            dataType: "json"
+        }).done(function (dataFromServer) {
+                $("#titel").text("Kontaktinformationer om en person for id");
+                $("#print1").text("Name: " + dataFromServer.firstName);
+                $("#print1").append(" " + dataFromServer.lastName);
+                $("#print1").append("<br>Email: " + dataFromServer.email);
+                $("#print1").append("<br>Address: " + dataFromServer.address);
+        }).fail(function () {
+            alert("Failed.");
+        });
+    });
+
 
     function makeRow(person) {
         var row = "<tr><td>" + person.firstName + "</td><td>" + person.lastName + "</td><td>" + person.email + "</td>\n\
