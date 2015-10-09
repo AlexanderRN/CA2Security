@@ -1,4 +1,4 @@
-package dk.cphbusiness.text;
+package dk.cphbusiness.test;
 
 import dk.cphbusiness.entity.Address;
 import dk.cphbusiness.entity.CityInfo;
